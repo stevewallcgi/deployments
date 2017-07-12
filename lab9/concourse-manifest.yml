@@ -28,11 +28,13 @@ instance_groups:
     release: concourse
     properties:
       # replace with your CI's externally reachable URL, e.g. https://ci.foo.com
-      external_url: https://172.28.98.51
+      external_url: https://concourse.lab09.ecsteam.io
 
       # replace with username/password, or configure GitHub auth
       basic_auth_username: admin
       basic_auth_password: admin
+
+      tls_bind_port: 443
 
       # replace with your SSL cert and key
       tls_cert: |

@@ -1,0 +1,44 @@
+---
+name: vault
+
+releases:
+  - name: vault
+    version: latest
+
+stemcells:
+- alias: trusty
+  os: ubuntu-trusty
+  version: latest
+
+instance_groups:
+- name: vault
+  ha:
+    disable_clustering: "true"
+  instances: 1
+  vm_type: default
+  stemcell: trusty
+  azs: [z1]
+  networks:
+  - name: default
+    default:
+    - dns
+    - gateway
+    static_ips:
+    - 172.28.98.52
+  persistent_disk_type: default
+  jobs:
+  - name: vault
+    release: vault
+    properties:
+      vault:
+        backend:
+          file:
+            path: /var/vcap/store/
+      use_file: true
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+  serial: true
