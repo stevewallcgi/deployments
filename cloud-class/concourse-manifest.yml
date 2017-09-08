@@ -1,0 +1,182 @@
+---
+name: concourse
+
+releases:
+- name: concourse
+  version: latest
+- name: garden-runc
+  version: latest
+
+stemcells:
+- alias: trusty
+  os: ubuntu-trusty
+  version: latest
+
+instance_groups:
+- name: web
+  instances: 1
+  # replace with a VM type from your BOSH Director's cloud config
+  vm_type: default
+  stemcell: trusty
+  azs: [z1]
+  networks:
+  - name: default
+    static_ips:
+    - 172.28.97.52
+  jobs:
+  - name: atc
+    release: concourse
+    properties:
+      vault:        
+        path_prefix: /concourse        
+        url: http://172.28.97.51:8200
+        auth:          
+          client_token: 85b42b73-8392-88dc-0ac4-a976af9d34a9
+
+      # replace with your CI's externally reachable URL, e.g. https://ci.foo.com
+      external_url: https://concourse.lab09.ecsteam.io
+
+      # replace with username/password, or configure GitHub auth
+      basic_auth_username: admin
+      basic_auth_password: admin
+
+      tls_bind_port: 443
+
+      # replace with your SSL cert and key
+      tls_cert: |
+             -----BEGIN CERTIFICATE-----
+             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
+             WOuwQRoQ+3f8wgHgC2iVs49Oa9vPOByv/A==
+             -----END CERTIFICATE-----
+
+      tls_key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        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
+        -----END RSA PRIVATE KEY-----
+
+      postgresql_database: &atc_db atc
+  - name: tsa
+    release: concourse
+    properties: {}
+
+- name: db
+  instances: 1
+  # replace with a VM type from your BOSH Director's cloud config
+  vm_type: large
+  stemcell: trusty
+  # replace with a disk type from your BOSH Director's cloud config
+  persistent_disk_type: large
+  azs: [z1]
+  networks: [{name: default}]
+  jobs:
+  - name: postgresql
+    release: concourse
+    properties:
+      databases:
+      - name: *atc_db
+        # make up a role and password
+        role: admin
+        password: admin
+
+- name: worker
+  instances: 3
+  # replace with a VM type from your BOSH Director's cloud config
+  vm_type: large-disk
+  stemcell: trusty
+  azs: [z1]
+  networks: [{name: default}]
+  jobs:
+  - name: groundcrew
+    release: concourse
+    properties: {}
+  - name: baggageclaim
+    release: concourse
+    properties: {}
+  - name: garden
+    release: garden-runc
+    properties:
+      garden:
+        listen_network: tcp
+        listen_address: 0.0.0.0:7777
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  serial: false
+  canary_watch_time: 1000-60000
+  update_watch_time: 1000-60000

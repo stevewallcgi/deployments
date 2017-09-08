@@ -1,0 +1,93 @@
+{
+    "jumpbox_az": {
+        "sensitive": false,
+        "type": "string",
+        "value": "us-east-1a"
+    },
+    "jumpbox_public_ip": {
+        "sensitive": false,
+        "type": "string",
+        "value": "54.89.13.216"
+    },
+    "jumpbox_security_group": {
+        "sensitive": false,
+        "type": "string",
+        "value": "sg-a8d582d8"
+    },
+    "prefix": {
+        "sensitive": false,
+        "type": "string",
+        "value": "mpm"
+    },
+    "private_subnet_cidr": {
+        "sensitive": false,
+        "type": "string",
+        "value": "172.28.97.0/24"
+    },
+    "private_subnet_id": {
+        "sensitive": false,
+        "type": "string",
+        "value": "Lab09-NetG"
+    },
+    "public_subnet_cidr": {
+        "sensitive": false,
+        "type": "string",
+        "value": "172.28.97.0/24"
+    },
+    "region": {
+        "sensitive": false,
+        "type": "string",
+        "value": "Lab09-Datacenter01"
+    },
+
+    "director_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "bosh-concourse-class`"
+    },
+    "internal_gateway": {
+        "sensitive": false,
+        "type": "string",
+        "value": "172.28.97.1"
+    },
+    "director_ip": {
+        "sensitive": false,
+        "type": "string",
+        "value": "172.28.97.50"
+    },
+    "datastore": {
+        "sensitive": false,
+        "type": "string",
+        "value": "nfs-lab09-vol1"
+    },
+    "iaas_endpoint": {
+        "sensitive": false,
+        "type": "string",
+        "value": "172.29.0.11"
+    },
+    "iaas_dns": {
+        "sensitive": false,
+        "type": "string",
+        "value": "[172.29.0.5]"
+    },
+    "iaas_image_location": {
+        "sensitive": false,
+        "type": "string",
+        "value": "bosh-templates"
+    },
+    "iaas_image": {
+        "sensitive": false,
+        "type": "string",
+        "value": "bosh-vms"
+    },
+    "iaas_disk": {
+        "sensitive": false,
+        "type": "string",
+        "value": "bosh-disks"
+    },
+    "iaas_cluster": {
+        "sensitive": false,
+        "type": "string",
+        "value": "Lab09-Cluster01"
+    }
+}

@@ -1,0 +1,41 @@
+bosh upload-release  https://bosh.io/d/github.com/cloudfoundry-community/vault-boshrelease
+bosh upload-stemcell https://bosh.io/d/stemcells/bosh-vsphere-esxi-ubuntu-trusty-go_agent
+
+Vault installation
+==================
+https://github.com/pivotalservices/concourse-pipeline-samples/tree/master/concourse-pipeline-patterns/vault-integration
+Unseal Key 1: ZXmcJdnTtmI7h9Pc8WM3BAAeUlwIPf+oC1vgNHWdpJFi
+Unseal Key 2: +VYRuEnYSGNUAtwMZd2Js7qt4WvV0plbD5aJ9YMLUNkG
+Unseal Key 3: cpTRXMJZ2kifQJ9UMrTn6Pdl356/qxTDjNwtW0jCptmz
+Unseal Key 4: mGjsjM4e/o1mQfL+s1DD48/NvTFR27n5E9DxzbbHkMqc
+Unseal Key 5: lszqIRsNIkQb+dkxTVsiShmW3611FnPfPWgW3Vw5vqTu
+Initial Root Token: 6d98ffb4-d927-7d38-2277-a7cbf4c0b75a
+
+https://www.vaultproject.io/downloads.html
+export VAULT_ADDR=http://172.28.97.51:8200
+vault init   <-- capture keys
+vault unseal <-- three times.
+vault auth
+
+$ vault token-create --policy=policy-concourse -period="600h" -format=json
+{
+	"request_id": "742020ba-f744-fd2b-8f32-1bf691ed3a14",
+	"lease_id": "",
+	"lease_duration": 0,
+	"renewable": false,
+	"data": null,
+	"warnings": null,
+	"auth": {
+		"client_token": "85b42b73-8392-88dc-0ac4-a976af9d34a9",
+		"accessor": "3a7e7fce-8685-93f8-0573-0e48864a4be5",
+		"policies": [
+			"default",
+			"policy-concourse"
+		],
+		"metadata": null,
+		"lease_duration": 2160000,
+		"renewable": true
+	}
+}
+
+
